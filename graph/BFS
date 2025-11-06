@@ -1,0 +1,25 @@
+# tree and graph
+tree: n finite nodes with hierarchical relationships
+graph: (V, E), V is non empty finite set of nodes and E is set of edges
+- edge weights
+
+Two ways of implementing graph:
+1. adjacency matrix: two dim array stores the adjaceny relationships between certices
+2. adjacent table: a vertex table and an edge table
+E.g.:
+1: 5(8)
+2: 5(6)
+3: 4(10) --> 5(2)
+...
+
+Codes:
+Python:
+```
+# adjacency matrix
+
+# adjacency table
+
+```
+
+# BFS
+Breadth-First Search
