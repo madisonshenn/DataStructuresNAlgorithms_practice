@@ -1,0 +1,27 @@
+# Binary Search
+
+#### 74. Search a 2D Matrix
+
+
+#### Follow up: 240. Search a 2D Matrix 2
+
+
+## binary search on special arrays
+special arrays:
+1. rotated sorted array
+2. find peak
+#### 154. Find Minimum in rotated sorted array 2
+If nums[mid] > numbs[end], min is at left of the mid, so left = mid + 1.
+If nums[mid] < numbs[end], min is either mid or at the right of the mid, so right = mid.
+If nums[mid] == numbs[end], we dont know, right = right - 1.
+
+#### 33. Search in Rotated Sorted Array
+1. find mid
+2. nums[mid] vs target
+3. [left, mid - 1] [mid + 1, right]
+
+#### 162. Find Peak Element
+
+#### 1901. Find Peak Element 2
+Find max per row or col, and check which of those max is the peak.
+https://courses.csail.mit.edu/6.006/spring11/lectures/lec02.pdf 
