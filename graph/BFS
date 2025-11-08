@@ -16,10 +16,22 @@ Codes:
 Python:
 ```
 # adjacency matrix
+matrix = [[0] * n for _ in range(n)]
+for e in edges:
+  u, v = e[0], e[1]
+  matrix[u][v] = 1
+  matrix[v][u] = 1
+print(matrix)
 
 # adjacency table
-
+graph = [[] for _ in range(n)]
+for e in edges:
+  u, v = e[0], e[1]
+  graph[u].append(v)
+  graph[v].append(u)
+print(graph)
 ```
 
 # BFS
-Breadth-First Search
+Breadth-First Search: always search for states that are close to the initial state first
+#### 1926. Maze Problem
