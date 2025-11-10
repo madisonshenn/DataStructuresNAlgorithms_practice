@@ -1,0 +1,154 @@
+# LinkedList
+nodes & pointers; add & remove elements
+```
+class ListNode:
+  def __init__(self, val = 0, next = None):
+    self.val = val
+    self.next = next
+```
+Add element:
+```
+new.next = prev.next
+prev.next = new
+```
+Delete element:
+```
+prev.next = prev.next.next
+```
+Delete head:
+```
+dummy = ListNode(0, head)
+...
+```
+#### 203. Remove Linked List Elements
+```
+class Solution:
+  def removeElements(self, head: Optional[ListNode], val: int) -> Optional[ListNode]:
+    dummy = ListNode(0, head)
+    cur = dummy
+    while cur and cur.next:
+      if cur.next.val == val:
+        cur.next = cur.next.next
+      else:
+        cur = cur.next
+    return dummy.next
+```
+wrong solution (not considering removing head):
+```
+class Solution:
+  def removeElements(self, head: Optional[ListNode], val: int) -> Optional[ListNode]:
+    cur = head
+    while cur and cur.next:
+      if cur.next.val == val:
+        cur.next = cur.next.next
+      else:
+        cur = cur.next
+    return head
+```
+#### 707. Design Linked List
+1. Confirming the edge cases/conditions:
+a. invalid get(index): -1
+b. addAtIndex: index == size, add at the end of the list; index > size, invalid
+c. delete: check invalid/valid
+d. nodes: starting from 0
+2. Functionalities:
+get(index)
+deletAtIndex(index)
+addAtHead(val)
+addAtTail(val)
+addAtIndex(index, val)
+```
+class ListNode:
+  def __init__(self, val = 0, next = None):
+    self.val = val
+    self.next = next
+class MyLinkedList:
+  def __init__(self_:
+    self.dummy = ListNode(0, None)
+    self.size = 0
+  def get(self, index: int) -> int:
+    if index < 0 or index >= self.size:
+      return -1
+    cur = self.dummy
+    for i in range(index + 1):
+      cur = cur.next    
+    return cur.val
+  def addAtHead(self, val: int) -> None:
+    node = ListNode(val, self.dummy.next)
+    self.dummy.next = node
+    self.size += 1
+  def addAtTail(self, val: int) -> None:
+    node = ListNode(val)
+    cur = self.dummy
+    while cur.next:
+      cur = cur.next
+    cur.next = node
+    self.size += 1
+  def addAtIndex(self, index: int, val: int) -> None:
+    if index < 0:
+      self.addAtHead(val)
+      return
+    if index > self.size:
+      return
+    cur = self.dummy
+    for i in range(index)
+      cur = cur.next
+    node = ListNode(val, cur.next)
+    cur.next = node
+    self.size += 1
+  def deleteAtIndex(self, index: int) -> None:
+    if index < 0 or index >= self.size:
+      return
+    cur = self.dummy
+    for i in range(index):
+      cur = cur.next
+    cur.next = cur.next.next
+    self.size -= 1
+```
+#### 206. Reverse Linked List
+iterative:
+```
+class ListNode(object):
+    def __init__(self, val=0, next=None):
+        self.val = val
+        self.next = next
+
+class Solution(object):
+  def reverseList(self, head):
+    last = None
+    cur = head
+    while cur:
+      nxt = cur.next
+      cur.next = last
+      last = cur
+      cur = nxt
+    return last
+```
+recursive:
+```
+class ListNode(object):
+    def __init__(self, val=0, next=None):
+        self.val = val
+        self.next = next
+
+class Solution(object):
+    def reverseList(self, head):
+        if not head or not head.next:
+            return head
+        res = self.reverseList(head.next)
+        head.next.next = head
+        head.next = None
+        return res
+```
+#### 876. Middle of the Linked List
+[why not the math solution???]
+```
+class Solution:
+    def middleNode(self, head: Optional[ListNode]) -> Optional[ListNode]:
+        slow = head
+        fast = head
+        while fast and fast.next:
+          slow = slow.next
+          fast = fast.next.next
+        return slow
+```
