@@ -1,0 +1,67 @@
+# Stack
+FILO
+In python, we can implement stack using list.
+st = []
+st.pop()
+st[-1]
+st.append(x)
+# Queue
+FIFO
+In python, we can use collections.deque().
+st = collections.deque()
+st.pop()
+st.popleft()
+st.append(x)
+st.appendleft(x)
+
+#### 232. Implement Queue using Stacks
+time complexity: O(1) on average
+space complexity: O(n)
+```
+class MyQueue:
+    def __init__(self):
+        self.s1 = [] # in
+        self.s2 = [] # out
+    def push(self, x: int) -> None:
+        self.s1.append(x)
+    def pop(self) -> int:
+        if not self.s2:
+            while self.s1:
+                self.s2.append(self.s1.pop())
+        return self.s2.pop()
+    def peek(self) -> int:
+        if not self.s2:
+            while self.s1:
+                self.s2.append(self.s1.pop())
+        return self.s2[-1]
+    def empty(self) -> bool:
+        if not self.s1 and not self.s2:
+            return True        
+        return False
+```
+#### 225. Implement Stack using Queues
+nocodes
+#### 20. Valid Parentheses
+nocodes
+#### 1047. Remove All Adjacent Duplicates In String
+E.g.
+input: s = "abbaca"
+output: "ca"
+"abbaca" --> "aaca" --> "ca"
+```
+class Solution:
+    def removeDuplicates(self, s: str, k = 2) -> str:
+        stack = [] # stack = [('a', 1)]
+        for ch in s:
+            if not stack or stack[-1][0] != ch:
+                stack.append((ch, 1))
+            else:
+                cur = stack.pop()
+                if cur[1] < k - 1:
+                    stack.append((ch, cur[1] + 1))
+        s = ""
+        for ch, time in stack:
+            s += ch * time
+        return s
+```
+#### 2296. Design a Text Editor
