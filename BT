@@ -1,0 +1,112 @@
+# Binary Tree & Binary Search Tree
+## traverse BT
+starting from root, traverse through all nodes
+### preorder
+```
+class Solution:
+  def preorderTraversal(self, root: Optional[TreeNode]) -> List[int]:
+    if not root:
+      return []
+    res = [root.val]
+    res.extend(self.preorderTraversal(root.left))
+    res.extend(self.preorderTraversal(root.right))
+    return res
+```
+```
+class Solution:
+  def preorderTraversal(self, root: Optional[TreeNode]) -> List[int]:
+    result = []
+    self.helper(root, result)
+    return result
+  def helper(self, root, result):
+    if root == None:
+      return
+    result.append(root.val)
+    self.helper(root.left, result)
+    self.helper(root.right, result)
+```
+### inorder
+```
+class Solution:
+  def preorderTraversal(self, root: Optional[TreeNode]) -> List[int]:
+    result = []
+    self.helper(root, result)
+    return result
+  def helper(self, root, result):
+    if root == None:
+      return
+    self.helper(root.left, result)
+    result.append(root.val)
+    self.helper(root.right, result)
+```
+### postorder
+```
+class Solution:
+  def preorderTraversal(self, root: Optional[TreeNode]) -> List[int]:
+    result = []
+    self.helper(root, result)
+    return result
+  def helper(self, root, result):
+    if root == None:
+      return
+    self.helper(root.left, result)
+    self.helper(root.right, result)
+    result.append(root.val)
+```
+## BST Search
+```
+class Solution:
+  def searchBST(self. root, val):
+    if root == None:
+      return None
+    cur = root
+    while cur != None:
+      if cur.val == val:
+        return cur
+      if cur.val > val:
+        cur = cur.left
+      else: 
+        cur = cur.right
+    return None
+```
+
+```
+class Solution:
+  def searchBST(self. root, val):
+    if root == None:
+      return None
+    if root.val == val:
+      return root
+    if val > root.val:
+      return self.searchBST(root.right, val)
+    else:
+      return slef.searchBST(root.left, val)
+```
+
+## BST Insert
+```
+class Solution:
+  def insertIntoBST(self, root: Optional[TreeeNode], val: int) -> Optional[TreeNode]:
+    if root == None:
+      return TreeNode(val)
+    if root.val > val:
+      root.left = self.insertIntoBST(root.left, val)
+    else:
+      root.right = self.insertIntoBST(root.right, val)
+    return root
+```
+## BST Delete
+
+```
+# delete 12
+
+# delete 14
+
+# delete 50
+temp = root.right;
+wile (temp.left != None){
+  temp = temp.left;
+}
+temp.left = root.left;
+root = root.right;
+```
