@@ -1,0 +1,61 @@
+# Heap
+for implementing priority queue
+usecase: repeatedly remove the object with the highest (or lowest) priority
+Heap in python:
+heapq
+x = [1,2,3,4,5] # list
+heapify(x)
+x[0] # min in the heap x
+heappop(x) # pop the min
+heappush(x, val) # insert val into heap
+delete elements from heap:
+x.remove(val)
+heapify(x)
+
+#### 75. Sort Colors
+Given a list of int, sort it from small to large.
+```
+class Solution:
+    def sortColors(self, nums: List[int]) -> None:
+        heapify(nums)
+        newList = []
+        while nums:
+            newList.append(heappop(nums))
+        nums[:] = newList[:]
+```
+#### 703. Kth Largest Element in a Stream
+```
+class Kthlargest:
+    def __init__(self, k: int, nums: List[int]):
+        self.heap = nums
+        self.k = k
+        heapq.heapify(nums)
+        while len(nums) > k:
+            heapq.heappop(nums)
+
+    def add(self, val: int) -> int:
+        heapq.heappush(self.heap, val)
+        if len(self.heap) > self.k:
+          heapq.heappop(self.heap)
+        return self.heap[0]
+```
+
+#### Minimum Cost to Hire K Workders
+There are n workers. You are given two integer
+arrays quality and wage where quality[i] is the quality of the ith worker and wage[i] is the minimum wage expectation for the ith worker.
+
+We want to hire exactly k workers to form a paid group. To hire a group of k workers, we must pay them according to the following rules:
+1.Every worker in the paid group should be paid in the ratio of their quality compared to other workers in the paid group.
+2.Every worker in the paid group must be paid at least their minimum wage expectation.
+Given the integer k, return the least amount of money needed to form a paid group satisfying the above conditions.
+
+Example: 
+Input: quality = [10,20,5], wage = [70,50,30], k = 2
+Output: 105.00000
+Explanation: We pay 70 to 0th worker and 35 to 2nd worker.
+
+```
+# sort by wage/quality
+# use heap to keep min k quality
+
+```
