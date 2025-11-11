@@ -1,0 +1,41 @@
+# HashMap
+#### two sum
+input: nums = [2, 7, 11, 15], taregt = 9
+output: [0, 1]
+```
+# time complexity O(n); space complexity O(n)
+class Solution:
+    def twoSum(self, nums: List[int], target: int) -> List[int]:
+        dic = {}
+        for i in range(len(nums)):
+            num = nums[i]
+            if target - num in dic:
+                return [dic[target - num], i]
+            dic[num] = i
+```
+#### two sum follow up
+input: nums = [0, 0, 1, 1, 2, 2], target = 2
+output: 5
+explain: nums[0] + nums[4] = nums[1] + nums[4] = nums[0] + nums[5] = nums[1] + nums[5] = nums[2] + nums[3] = 2
+
+
+#### Group Anagrams
+Given an array of strings strs, group the anagrams together.
+You can return the answer in any order.
+An Anagram is a word or phrase formed by rearranging the letters of a different word or phrase, typically using all the original letters exactly once.
+
+Example:
+Input: strs = ["eat","tea","tan","ate","nat","bat"]
+Output: [["bat"],["nat","tan"],["ate","eat","tea"]]
+
+```
+class Solution:
+    def groupAnagrams(self, strs: List[str]) -> List[List[str]]:
+      dic = collections.defaultdict(list)
+      for s in strs:
+        dic[''.join(sorted(s))].append(s)
+      res = []
+      for key, val in dic.items():
+        res.append(val)
+      return res
+```
